@@ -27,7 +27,7 @@ const Admin = () => {
 
   const getUsers = async () => {
     try {
-      const response = await apiFetch("http://localhost:5001/api/users", {
+      const response = await apiFetch("${import.meta.env.VITE_API_URL}/users", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -41,7 +41,7 @@ const Admin = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await apiFetch(`http://localhost:5001/api/users/${id}`, { method: "DELETE" });
+      const response = await apiFetch(`${import.meta.env.VITE_API_URL}/users/${id}`, { method: "DELETE" });
       const data = await response.json();
       if (response.ok) {  getUsers(); }
       else {}
@@ -50,7 +50,7 @@ const Admin = () => {
 
   const deleteOrder = async (id) => {
     try {
-      const response = await apiFetch(`http://localhost:5001/api/orders/${id}`, { method: "DELETE" });
+      const response = await apiFetch(`${import.meta.env.VITE_API_URL}/orders/${id}`, { method: "DELETE" });
       const data = await response.json();
       if (response.ok) {  getOrders(); }
       else {}
@@ -61,7 +61,7 @@ const Admin = () => {
     setSearch(value);
     if (value === "") { getUsers(); return; }
     try {
-      const response = await apiFetch(`http://localhost:5001/api/users/search?query=${value}`, {
+      const response = await apiFetch(`${import.meta.env.VITE_API_URL}/users/search?query=${value}`, {
         method: "GET",
       });
       const data = await response.json();
@@ -72,7 +72,7 @@ const Admin = () => {
 
   const getOrders = async () => {
     try {
-      const response = await apiFetch("http://localhost:5001/api/orders");
+      const response = await apiFetch("${import.meta.env.VITE_API_URL}/orders");
       const data = await response.json();
       if (response.ok) setOrders(data.data || data);
       else {}
@@ -81,7 +81,7 @@ const Admin = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      const response = await apiFetch(`http://localhost:5001/api/orders/${id}/status`, {
+      const response = await apiFetch(`${import.meta.env.VITE_API_URL}/orders/${id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),

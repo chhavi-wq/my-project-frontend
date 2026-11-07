@@ -9,7 +9,7 @@ export default function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:5001/api/signup", {
+    const res = await fetch(`/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),

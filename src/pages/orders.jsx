@@ -23,7 +23,7 @@ const Orders = () => {
   };
 
   const fetchOrders = async () => {
-    const response = await apiFetch(`http://localhost:5001/api/orders/user/${localStorage.getItem("userId")}`, {
+    const response = await apiFetch(`${import.meta.env.VITE_API_URL}/orders/user/${localStorage.getItem("userId")}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
