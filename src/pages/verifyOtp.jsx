@@ -22,7 +22,7 @@ export default function VerifyOtp() {
   const handleVerify = async (e) => {
     e.preventDefault();
     const code = otp.join("");
-    const res = await fetch(`/verify-otp`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/verify-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, otp: code }),
@@ -37,7 +37,7 @@ export default function VerifyOtp() {
   };
 
   const handleResend = async () => {
-    const res = await fetch(`/resend-otp`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/resend-otp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),

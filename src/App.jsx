@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import Home from './pages/Home'
 import Contact from './pages/contact'
 import Shop from './pages/shop'
@@ -18,6 +19,7 @@ function App() {
   const hideNavbar = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/verify-otp";
   return (
     <>
+      <Toaster position="top-right" />
       {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<ProtectRouting><Home /></ProtectRouting>} />
