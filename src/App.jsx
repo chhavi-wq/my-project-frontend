@@ -10,7 +10,7 @@ import Login from './pages/login'
 import Signup from './pages/signup'
 import VerifyOtp from './pages/verifyOtp'
 import Navbar from './components/Navbar'
-import AdminRoute from './components/AdminRoute'
+import AdminRoute from './components/adminRoute'
 import ProtectRouting from './components/protectRouting'
 
 function App() {
