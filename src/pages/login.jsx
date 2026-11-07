@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function Login() {
       localStorage.setItem("userId", data.data._id);
       navigate("/");
     } else {
-      alert(data.message);
+      toast.error("Not logged in, signup first");
     }
   };
 
