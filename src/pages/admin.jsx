@@ -43,7 +43,7 @@ const Admin = () => {
     try {
       const response = await apiFetch(`${import.meta.env.VITE_API_URL}/users/${id}`, { method: "DELETE" });
       const data = await response.json();
-      if (response.ok) {  getUsers(); }
+      if (response.ok) {  getUsers(); getOrders(); }
       else {}
     } catch {  }
   };
