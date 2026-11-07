@@ -10,7 +10,7 @@ export default function Cart() {
 
   const handlePayNow = async () => {
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/payment/create-order', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: total, currency: 'INR', receipt: 'rcpt_' + Date.now() }),
@@ -30,12 +30,12 @@ handler: (response) => {
              navigate("/login");
              return;
            }
-           fetch('${import.meta.env.VITE_API_URL}/payment/verify', {
+           fetch(`${import.meta.env.VITE_API_URL}/payment/verify`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(response),
           }).then(() => {
-            fetch('${import.meta.env.VITE_API_URL}/orders', {
+            fetch(`${import.meta.env.VITE_API_URL}/orders`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
